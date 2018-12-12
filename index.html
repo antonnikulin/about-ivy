@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ivy - меньше, быстрее и проще</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="theme/styles.css">
+  <link rel="stylesheet" href="theme/custom.css">
+  <link rel="stylesheet" href="theme/tomorrow-night.css">
+
+  <link rel="icon" sizes="16x16" href="theme/images/favicon-16x16.png">
+  <link rel="icon" sizes="32x32" href="theme/images/favicon-32x32.png">
+  <link rel="icon" sizes="96x96" href="theme/images/favicon-96x96.png">
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Ivy - меньше, быстрее и проще</h1>
+    <p>Что это такое, как работает и чем отличается от Renderer2</p>
+  </header>
+
+  <section class="slide" id="cover">
+    <div class="cover-title">
+      <img class="angular-logo" src="./pictures/angular.svg" alt="">
+      <h1 class="title">IVY</h1>
+    </div>
+    <div class="cover-subtitle">
+      <div class="cover-top">
+        Меньше, быстрее и проще
+      </div>
+      <div class="cover-bottom"><span class="bold">Tinkoff</span>.ru</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2><code>whoami</code></h2>
+    <div class="whoami">
+      <img src="./pictures/iam.jpg" class="whoiami__img" alt="">
+      <div">
+        <p class="whoiami__name">Антон Никулин</p>
+        <p class="whoiami__text">Фронденд разработчик Tinkoff.ru</p>
+        <p class="whoiami__text">Проекты для малого и среднего бизнеса</p>
+    </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>О технологиях</h2>
+    <div class="center-around">
+      <img class="tech-logo__image next" src="./pictures/react.svg" alt="">
+      <img class="tech-logo__image next" src="./pictures/angular.svg" alt="">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>ngConf 2018</h2>
+    <div class="center">
+      <img class="ng-conf" src="./pictures/NG-CONF.png" alt="">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Почему Ivy?</h2>
+    <div class="center rim">
+      Ivy<span class="next">&nbsp;=> IV</span>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>План</h2>
+    <ul>
+      <li class="next">Обозначим базовые понятия</li>
+      <li class="next">Разберем структуру модулей Angular</li>
+      <li class="next">Посмотрим как работает рендеринг в Renderer2</li>
+      <li class="next">Разберемся что предлагает IVY</li>
+      <li class="next">Узнаем как начать его использовать</li>
+    </ul>
+  </section>
+
+  <section class="slide part">
+    <div class="part-title">№1. Базовые понятия</div>
+  </section>
+
+  <section class="slide">
+    <h2>Render Engine</h2>
+    <p>Что такое движок рендеринга?</p>
+    <ul>
+      <li class="next">Компонент</li>
+      <li class="next">HTML</li>
+      <li class="next">Стили</li>
+      <li class="next">... другие импорты</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Render Engine</h2>
+    <img src="./pictures/scheme.svg" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Tree Shaking</h2>
+    <img class="groot" src="./pictures/groot.gif" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Tree Shaking</h2>
+    <pre>
+      <code>import {used} from './something'; // Используется</code>
+      <code>import {notUsed} from './something'; // Не используется</code>
+      <code> </code>
+      <code>function mainFunction(): string {</code>
+      <code>    used();</code>
+      <code> </code>
+      <code>    console.log('I am your main function.');</code>
+      <code>}</code>
+      <code> </code>
+      <code>mainFunction();</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Tree Shaking</h2>
+    <pre>
+      <code>import {used} from './something'; // Оставили</code>
+      <code>// import {notUsed} ... - Удалили</code>
+      <code> </code>
+      <code>function mainFunction(): string {</code>
+      <code>    used();</code>
+      <code> </code>
+      <code>    console.log('I am your main function.');</code>
+      <code>}</code>
+      <code> </code>
+      <code>mainFunction();</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Tree Shaking</h2>
+    <pre>
+      <code>import {notUsed} from './something';</code>
+      <code> </code>
+      <code>function mainFunction(needToRun: boolean): string {</code>
+      <code>    <mark>if (needToRun)</mark> {</code>
+      <code>        notUsed(); // Никогда не выполнится</code>
+      <code>    }</code>
+      <code> </code>
+      <code>    return 'return me';</code>
+      <code>}</code>
+      <code> </code>
+      <code>mainFunction(<mark>false</mark>);</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Tree Shaking</h2>
+    <pre>
+      <code>import {notUsed} from './something'; // Оставили</code>
+      <code> </code>
+      <code>function mainFunction(needToRun: boolean): string {</code>
+      <code>    if (needToRun) {</code>
+      <code>        notUsed(); // Никогда не выполнится</code>
+      <code>    }</code>
+      <code> </code>
+      <code>    return 'return me';</code>
+      <code>}</code>
+      <code> </code>
+      <code>mainFunction(false);</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>AoT и JiT</h2>
+    <div class="center-around">
+      <div class="compile-item">
+        <h3>JiT</h3>
+        <p>Just in time</p>
+        <p>Компиляция во время выполнения</p>
+      </div>
+      <div class="compile-item">
+        <h3>AoT</h3>
+        <p>Ahead of time</p>
+        <p>Компиляция кода перед выполнением</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>JiT</h2>
+    <p>Компиляция и интерпретация кода происходит в браузере.</p>
+    <ul>
+      <li class="next">Загрузить фреймворк с компилятором</li>
+      <li class="next">Загрузить код приложения</li>
+      <li class="next">Распарсить код</li>
+      <li class="next">Компилировать в выполняемый код</li>
+      <li class="next">Выполнить его</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>AoT</h2>
+    <p>Компиляция происходит заранее, что позволяет убрать компилятор из фреймворка.</p>
+    <ul>
+      <li class="next">Загрузить только фреймворк</li>
+      <li class="next">Загрузить код</li>
+      <li class="next">Распарсить</li>
+      <li class="next">Выполнить</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>AoT: Преимущества</h2>
+    <ul>
+      <li class="next">Уменьшенный размер бандла <code>vendor</code></li>
+      <li class="next">Более высокая скорость работы в браузере</li>
+      <li class="next">Повышенная безопасность</li>
+      <li class="next">Раннее обнаружение ошибок</li>
+      <li class="next">Tree Shaking</li>
+    </ul>
+  </section>
+
+  <section class="slide part">
+    <div class="part-title">№2. Как писать Angular?</div>
+  </section>
+
+  <section class="slide">
+    <h2>Делай раз - Компонент</h2>
+    <pre>
+      <code>import { Component } from '@angular/core'; </code>
+      <code> </code>
+      <code>@Component({ </code>
+      <code>  selector: 'app-root', </code>
+      <code>  templateUrl: './app.component.html', </code>
+      <code>  styleUrls: ['./app.component.less'] </code>
+      <code>}) </code>
+      <code>export class AppComponent { </code>
+      <code>  title = 'App Name'; </code>
+      <code>} </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Делай два - Шаблон</h2>
+    <pre>
+      <code>&lt;header&gt; </code>
+      <code>  &lt;h1&gt;{{title}}&lt;/h1&gt; </code>
+      <code>&lt;/header&gt; </code>
+      <code> </code>
+      <code>&lt;p&gt;Привет, Tinkoff Meetup!&lt;/p&gt; </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Делай три - Стили</h2>
+    <pre>
+      <code>header { </code>
+      <code>  padding: 30px; </code>
+      <code>  background-color: #1f1f1f; </code>
+      <code>} </code>
+      <code> </code>
+      <code>h1 { </code>
+      <code>  color: #fff; </code>
+      <code>  font-size: 24px; </code>
+      <code>  margin: 0; </code>
+      <code>} </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Делай четыре - Модуль</h2>
+    <pre>
+      <code>import { NgModule } from '@angular/core'; </code>
+      <code>import { BrowserModule } from '@angular/platform-browser'; </code>
+      <code>import { AppComponent } from './app.component'; </code>
+      <code> </code>
+      <code>@NgModule({ </code>
+      <code>  declarations: [AppComponent], </code>
+      <code>  imports: [BrowserModule], </code>
+      <code>  bootstrap: [AppComponent] </code>
+      <code>}) </code>
+      <code>export class AppModule {} </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Как это выглядит?</h2>
+    <img class="svg" src="./pictures/angular/component.svg" alt="">
+  </section>
+
+  <section class="slide part">
+    <div class="part-title">№3. Как работает рендеринг Angular?</div>
+  </section>
+
+  <section class="slide">
+    <h2>Renderer2: Как это работает?</h2>
+    <div class="process">
+      <div class="process-item">Шаблон HTML</div>
+      =>
+      <div class="process-item">Описание шаблона</div>
+      =>
+      <div class="process-item">Интер-претатор Angular</div>
+      =>
+      <div class="process-item">DOM</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Renderer2: Как это работает?</h2>
+    <pre>
+      <code>&lt;div&gt;</code>
+      <code>  &lt;app-header&gt;&lt;/app-header&gt;</code>
+      <code>  Hey, {{dude}}!</code>
+      <code>  &lt;app-footer&gt;&lt;/app-footer&gt;</code>
+      <code>&lt;/div&gt;</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Renderer2: Как это работает?</h2>
+    <pre>
+      <code>viewDef(0, [</code>
+      <code>    elementDef(0, 0, null, null, 5, "div", []...),</code>
+      <code>    elementDef(1, ..., "app-header", [],...),</code>
+      <code>    directiveDef(2, ..., <mark>i3.HeaderComponent</mark>, ...),</code>
+      <code>    textDef(3, null, [" Hey, ", "! "]),</code>
+      <code>    elementDef(4, ..., "app-footer", ...),</code>
+      <code>    directiveDef(5, 114688, null, 0, i5.FooterComponent, ...)</code>
+      <code>]);</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Renderer2: Как это работает?</h2>
+    <pre>
+        <code>function createViewNodes(view: ViewDef) {</code>
+        <code>    view.nodes.forEach(node =&gt; {</code>
+        <code>        if (isElementDef(node)) createElement(node);</code>
+        <code>        if (hasListeners(node)) listenToElementOutputs(node);</code>
+        <code>        if (hasPipe(node)) createPipeInstance(node);</code>
+        <code>        ...</code>
+        <code>    });</code>
+        <code>}</code>
+      </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Renderer2: Как это работает?</h2>
+    <pre>
+          <code>&lt;app-root _nghost-c0="" ng-version="6.1.9"&gt;</code>
+          <code>    &lt;div _ngcontent-c0=""&gt;</code>
+          <code>        &lt;app-header _ngcontent-c0="" _nghost-c1=""&gt;</code>
+          <code>            &lt;p _ngcontent-c1=""&gt;header works!&lt;/p&gt;</code>
+          <code>        &lt;/app-header&gt;</code>
+          <code>        Hey, dude!</code>
+          <code>        &lt;app-footer _ngcontent-c0="" _nghost-c2=""&gt;</code>
+          <code>            &lt;p _ngcontent-c2=""&gt;footer works!&lt;/p&gt;</code>
+          <code>        &lt;/app-footer&gt;</code>
+          <code>    &lt;/div&gt;</code>
+          <code>&lt;/app-root&gt;</code>
+      </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Renderer2: AoT</h2>
+    <p>Формируются файлы <code>.metadata.json</code>, которые описывают структуру компонентов и их зависимости, а также файлы <code>component.factory.js</code>, которые создают компоненты.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Renderer2: AoT</h2>
+    <img src="./pictures/three.svg" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Боль разработчика Angular</h2>
+    <img src="./pictures/harold.jpg" class="harold" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Боль разработчика Angular</h2>
+    <ul>
+      <li class="next">Долгое время сборки</li>
+      <li class="next">Размер бандла</li>
+      <li class="next">Код фреймворка находится в одном файле</li>
+      <li class="next">Сложно использовать сторонний AoT</li>
+    </ul>
+    <img src="./pictures/pepe.png" alt="" class="next pepe">
+  </section>
+
+  <section class="slide part">
+    <div class="part-title">№4. Ivy</div>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy</h2>
+    <div class="features">
+      <div class="feature next">
+        <img src="./pictures/smaller.svg" alt="" class="feature__image">
+        <p class="feature__name">Меньше</p>
+      </div>
+      <div class="feature next">
+        <img src="./pictures/faster.svg" alt="" class="feature__image">
+        <p class="feature__name">Быстрее</p>
+      </div>
+      <div class="feature next">
+        <img src="./pictures/simpler.svg" alt="" class="feature__image">
+        <p class="feature__name">Проще</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Принципы Ivy: Locality</h2>
+    <p>Компонент должен быть компилируемым, используя только данные, которые указаны в его декораторе и классе.</p>
+    <pre class="next">
+      <code>@Component({ </code>
+      <code>  selector: 'app-root', </code>
+      <code>  templateUrl: './app.component.html', </code>
+      <code>  styleUrls: ['./app.component.less'] </code>
+      <code>}) </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Принципы Ivy: Locality</h2>
+    <p>Компонент должен быть компилируемым, используя только данные, которые указаны в его декораторе и классе.</p>
+    <h3 class="next">Что это дает:</h3>
+    <ul class="profit">
+      <li class="next">Нет необходимости в <code>.metadata.json</code></li>
+      <li class="next">Можно добавлять модули, компоненты и т.д. на лету</li>
+      <li class="next">Выкладывать AoT-модули в NPM будет проще</li>
+      <li class="next">Можно смешивать JiT и AoT модули</li>
+      <li class="next">Метапрограммирование</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Принципы Ivy: Locality</h2>
+    <img src="./pictures/three.svg" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Принципы Ivy: Incrementality</h2>
+    <p>Время билда должно быть прорционально размеру изменения, а не размеру приложения.</p>
+    <h3 class="next">Что это дает:</h3>
+    <ul class="profit">
+      <li class="next">Ускорение разработки</li>
+    </ul>
+    <img class="love next" src="./pictures/love.png" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Принципы Ivy: Tree Shaking</h2>
+    <p>Неиспользуемые части фреймворка не должны попадать в сборку.</p>
+    <h3 class="next">Что это дает:</h3>
+    <ul class="profit">
+      <li class="next">Уменьшение бандла</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Принципы Ivy: Code Spliting</h2>
+    <img src="./pictures/split_1.svg" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Принципы Ivy: Code Spliting</h2>
+    <img src="./pictures/split_2.svg" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как это работает?</h2>
+    <div class="process ivy">
+      <div class="process-item">Шаблон HTML</div>
+      =>
+      <div class="process-item">Инструкции для шаблона</div>
+      =>
+      <div class="process-item">DOM</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как это работает?</h2>
+    <pre>
+      <code>&lt;div&gt;</code>
+      <code>  &lt;app-header&gt;&lt;/app-header&gt;</code>
+      <code>  Hey, {{dude}}!</code>
+      <code>  &lt;app-footer&gt;&lt;/app-footer&gt;</code>
+      <code>&lt;/div&gt;</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как это работает?</h2>
+    <pre>
+      <code>i0.elementStart(0, 'div');</code>
+      <code>i0.element(1, 'app-header');</code>
+      <code>i0.text(2);</code>
+      <code>i0.element(3, 'app-footer');</code>
+      <code>i0.elementEnd();</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Манипулирование DOM'ом</h2>
+    <ul>
+      <li class="next">React | Vitrual DOM</li>
+      <li class="next">Ember | Glimmer</li>
+      <li class="next">Incremental DOM</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Virtual DOM</h2>
+    <img src="./pictures/dom/reactdom.png" alt="" class="svg">
+  </section>
+
+  <section class="slide">
+    <h2>Glimmer</h2>
+    <img src="./pictures/dom/emberdom4.png" alt="" class="svg">
+  </section>
+
+  <section class="slide">
+    <h2>Incremental DOM</h2>
+    <img src="./pictures/dom/idom.png" alt="" class="svg">
+  </section>
+
+  <section class="slide">
+    <h2>Incremental DOM</h2>
+    <pre>
+      <code>function render(data) {</code>
+      <code>  elementVoid('input', '', [ 'type', 'text' ]);</code>
+      <code>  elementOpen('div', '', null);</code>
+      <code>    if (data.someCondition) {</code>
+      <code>      text(data.text);</code>
+      <code>    }</code>
+      <code>  elementClose('div');</code>
+      <code>}</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как это работает?</h2>
+    <pre class="next"><code>&lt;span&gt;{{name}}&lt;/span&gt;</code></pre>
+    <pre class="next">
+      <code>template: (rf: RenderFlags, ctx: MyApp) =&gt; { </code>
+        <code>    if (rf & RenderFlags.Create) { </code>
+        <code class="next">        debugger;</code>
+        <code>        elementStart(0, 'span'); </code>
+        <code>        elementEnd(); </code>
+        <code>    } </code>
+        <code>    if (rf & RenderFlags.Update) { </code>
+        <code>        elementProperty(0, 'name', bind(ctx.name)); </code>
+        <code>    } </code>
+        <code>}, </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как было</h2>
+    <pre>
+      <code>viewDef(0, [</code>
+      <code>    elementDef(0, 0, null, null, 5, "div", []...),</code>
+      <code>    elementDef(1, ..., "app-header", [],...),</code>
+      <code>    directiveDef(2, ..., i3.HeaderComponent, ...),</code>
+      <code>    textDef(3, null, [" Hey, ", "! "]),</code>
+      <code>    elementDef(4, ..., "app-footer", ...),</code>
+      <code>    directiveDef(5, 114688, null, 0, i5.FooterComponent, ...)</code>
+      <code>]);</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как было</h2>
+    <pre>
+        <code>function createViewNodes(view: ViewDef) {</code>
+        <code>    view.nodes.forEach(node =&gt; {</code>
+        <code>        if (isElementDef(node)) createElement(node);</code>
+        <code>        if (hasListeners(node)) listenToElementOutputs(node);</code>
+        <code>        if (hasPipe(node)) createPipeInstance(node);</code>
+        <code>        ...</code>
+        <code>    });</code>
+        <code>}</code>
+      </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как стало</h2>
+    <pre>
+      <code>i0.elementStart(0, 'div');</code>
+      <code>i0.element(1, 'app-header');</code>
+      <code>i0.text(2);</code>
+      <code>i0.element(3, 'app-footer');</code>
+      <code>i0.elementEnd();</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Как это работает?</h2>
+    <pre>
+      <code>&lt;app-root _nghost-c0="" ng-version="6.1.9"&gt;</code>
+      <code>    &lt;div _ngcontent-c0=""&gt;</code>
+      <code>        &lt;app-header _ngcontent-c0="" _nghost-c1=""&gt;</code>
+      <code>            &lt;p _ngcontent-c1=""&gt;header works!&lt;/p&gt;</code>
+      <code>        &lt;/app-header&gt;</code>
+      <code>        Hey, dude!</code>
+      <code>        &lt;app-footer _ngcontent-c0="" _nghost-c2=""&gt;</code>
+      <code>            &lt;p _ngcontent-c2=""&gt;footer works!&lt;/p&gt;</code>
+      <code>        &lt;/app-footer&gt;</code>
+      <code>    &lt;/div&gt;</code>
+      <code>&lt;/app-root&gt;</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ivy: Что в итоге?</h2>
+    <ul>
+      <li class="next">Ускорение сборки</li>
+      <li class="next">Уменьшение размера бандла</li>
+      <li class="next">Ускорение разработки</li>
+      <li class="next">Возможность дебажить шаблоны</li>
+      <li class="next">Упрощение доставки AoT в NPM</li>
+      <li class="next">Более эффективное разделение кода</li>
+    </ul>
+    <p class="next"><b>Ivy полностью обратно совместима</b></p>
+  </section>
+
+  <section class="slide part">
+    <div class="part-title">№5. Сравнение</div>
+  </section>
+
+  <section class="slide">
+    <h2>Результаты Hello World</h2>
+    <div class="center-around">
+      <div class="compile-item">
+        <h3>93%</h3>
+        <p>36kb => 2.7kb</p>
+        <p>Уменьшение размера Hello World</p>
+      </div>
+      <div class="compile-item">
+        <h3>45%</h3>
+        <p>4s => 2.2s</p>
+        <p>Сокращение времени загрузки</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Bazel</h2>
+    <img class="bazel" src="pictures/bazel-icon.svg" alt="">
+  </section>
+
+  <section class="slide part">
+    <div class="part-title">№5. Про мой опыт</div>
+  </section>
+
+  <section class="slide part">
+    <div class="part-title">№6. Когда же ждать?</div>
+  </section>
+
+  <section class="slide">
+    <h2>Когда ждать?</h2>
+    <img class="roadmap" src="./pictures/roadmap.png" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Когда ждать?</h2>
+    <img class="roadmap" src="./pictures/status.png" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Ссылки на все ссылки</h2>
+    <img src="./pictures/qr-code.gif" alt="">
+  </section>
+
+  <section class="slide">
+    <h2 class="shout shrink">Дальше действовать будем мы</h2>
+  </section>
+
+  <div class="progress"></div>
+
+  <script src="node_modules/shower-core/shower.min.js"></script>
+  <script src="./js/highlight.pack.js"></script>
+  <script src="./js/main.js"></script>
+
+</body>
+
+</html>

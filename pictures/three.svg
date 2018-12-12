@@ -1,0 +1,43 @@
+
+<svg width="708px" height="347px" viewBox="0 0 708 347" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <text id="Приложение" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="304.772705" y="14">Приложение</tspan>
+        </text>
+        <text id="Шапка" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="118.978516" y="125">Шапка</tspan>
+        </text>
+        <text id="Контент" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="540.029785" y="125">Контент</tspan>
+        </text>
+        <text id="Логотип" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="0.00756835938" y="234">Логотип</tspan>
+        </text>
+        <text id="Ссылки" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="231.825928" y="234">Ссылки</tspan>
+        </text>
+        <text id="Юзер" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="451.683105" y="233">Юзер</tspan>
+        </text>
+        <text id="Статья" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="645.308594" y="233">Статья</tspan>
+        </text>
+        <text id="Фото" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="379.556152" y="343">Фото</tspan>
+        </text>
+        <text id="Информация" fill="#FFFFFF" font-family="Helvetica" font-size="19" font-weight="normal">
+            <tspan x="550.006348" y="343">Информация</tspan>
+        </text>
+        <path id="Line" d="M155.549916,102.306431 L361.809935,17.5375334 L362.272402,17.3474685 L362.652531,18.2724017 L362.190065,18.4624666 L155.930046,103.231364 L157.450565,106.931097 L147.415582,106.190065 L154.029397,98.606698 L155.549916,102.306431 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-3" d="M44.2225955,211.331247 L148.689602,128.608014 L149.081588,128.297616 L149.702384,129.081588 L149.310398,129.391986 L44.8433916,212.115219 L47.3265759,215.251108 L37.4772447,217.310398 L41.7394113,208.195359 L44.2225955,211.331247 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-2" d="M569.939566,103.256023 L361.811352,18.4630462 L361.348305,18.2743977 L361.725602,17.3483054 L362.188648,17.5369538 L570.316863,102.32993 L571.826051,98.6255608 L578.463046,106.188648 L568.430379,106.960392 L569.939566,103.256023 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-4" d="M259.906427,212.290305 L149.699454,129.39959 L149.299864,129.099044 L149.900956,128.299864 L150.300546,128.60041 L260.50752,211.491125 L262.911889,208.294407 L267.39959,217.300546 L257.502058,215.487023 L259.906427,212.290305 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-5" d="M481.878739,211.075963 L577.673819,128.621047 L578.052772,128.294865 L578.705135,129.052772 L578.326181,129.378953 L482.531101,211.83387 L485.140553,214.865497 L475.383758,217.326181 L479.269288,208.044335 L481.878739,211.075963 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-6" d="M670.225208,208.842268 L577.674289,129.379358 L577.294931,129.053647 L577.946353,128.294931 L578.325711,128.620642 L670.876631,208.083553 L673.48232,205.048691 L677.379358,214.325711 L667.619519,211.87713 L670.225208,208.842268 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-7" d="M408.948246,317.166132 L475.616908,237.678689 L475.93822,237.295597 L476.704403,237.93822 L476.383092,238.321311 L409.714429,317.808755 L412.779161,320.379244 L403.547736,324.383092 L405.883513,314.595643 L408.948246,317.166132 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-8" d="M600.735726,319.769323 L476.226515,238.418576 L475.807939,238.14509 L476.35491,237.307939 L476.773485,237.581424 L601.282697,318.932172 L603.47058,315.583565 L608.543576,324.273485 L598.547842,323.11793 L600.735726,319.769323 Z" fill="#979797" fill-rule="nonzero"></path>
+        <text id="Angular-Material" font-family="Helvetica" font-size="28" font-weight="normal" fill="#D70F0F">
+            <tspan x="47.0625" y="332">Angular Material</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,187 @@
+.title {
+  font: 300 200px/1 pfhighway, sans-serif;
+  text-align: center;
+}
+
+.cover-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.angular-logo {
+  position: relative;
+  bottom: -5px;
+  max-width: 180px;
+  margin-right: 20px;
+}
+
+.whoami p {
+  margin: 0;
+  font-family: pragmatica;
+}
+
+.whoiami__img {
+  max-width: 200px;
+  border-radius: 50%;
+  margin-bottom: 0px;
+}
+
+.whoiami__name {
+  font-size: 58px;
+  margin: 0;
+}
+
+.whoiami__text {
+  line-height: 35px;
+}
+
+.harold {
+  max-width: 700px;
+}
+
+.pepe {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 250px;
+}
+
+.process {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+}
+
+.process-item {
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #808080;
+  border-radius: 5px;
+  width: 19.5%;
+  margin: 0 10px;
+  word-wrap: break-word;
+}
+
+.ivy .process-item {
+  width: 28%;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.feature {
+  text-align: center;
+  max-width: 30%;
+  margin: 0 30px;
+}
+
+.feature__image {
+  width: 140px;
+  min-height: 150px;
+}
+
+.feature__name {
+  margin-top: 20px;
+  font-family: pragmatica;
+}
+
+.groot {
+  max-width: 400px;
+}
+
+.incrementality {
+  margin: 100px 0 0 100px;
+}
+
+.love {
+  position: absolute;
+  bottom: 0;
+  left: 32%;
+  max-width: 300px;
+}
+
+.center-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tech-logo__image {
+  width: 300px;
+  height: 210px;
+  margin-top: 100px;
+}
+
+.ng-conf {
+  max-width: 200px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 67%;
+}
+
+.rim {
+  font-size: 100px;
+}
+
+.compile-item {
+  width: 42%;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.compile-item h3 {
+  margin: 0 0 40px;
+  font-size: 52px;
+  font-weight: normal;
+}
+
+.compile-item p {
+  line-height: 40px;
+  margin: 25px 0;
+  font-size: 32px;
+}
+
+.compilers {
+  max-width: 100%;
+}
+
+.roadmap {
+  max-width: 400px;
+}
+
+.profit {
+  color: #87e474;
+}
+
+.slide.part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.part-title {
+  width: 100%;
+  padding: 50px;
+  background-color: #ffcd33;
+  color: #000;
+  font: 200 60px/1 pfhighway, sans-serif;
+  text-align: center;
+}
+
+.svg {
+  max-width: 100%;
+  height: calc(100% - 150px);
+}
+
+.bazel {
+  max-width: 450px;
+}

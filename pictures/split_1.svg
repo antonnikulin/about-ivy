@@ -1,0 +1,32 @@
+
+<svg width="589px" height="352px" viewBox="0 0 589 352" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="0.5" y="87.5" width="188" height="188"></rect>
+        <text id="Приложение" font-family="Helvetica" font-size="19" font-weight="normal" fill="#000000">
+            <tspan x="37.2727051" y="190">Приложение</tspan>
+        </text>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFED0" x="412.5" y="12.5" width="139" height="99"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#EDFFF1" x="412.5" y="132.5" width="139" height="99"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#F0F2FF" x="412.5" y="252.5" width="139" height="99"></rect>
+        <path id="Line" d="M404.75185,66.4681457 L189.236932,182.440299 L188.796633,182.677231 L188.322769,181.796633 L188.763068,181.559701 L404.277986,65.5875478 L402.382529,62.0651563 L412.440299,61.7630678 L406.647308,69.9905371 L404.75185,66.4681457 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-2" d="M403.501142,182.019057 L189.001121,182.499999 L188.501122,182.50112 L188.49888,181.501122 L188.998879,181.500001 L403.4989,181.01906 L403.489932,177.01907 L412.499999,181.498879 L403.510111,186.019047 L403.501142,182.019057 Z" fill="#979797" fill-rule="nonzero"></path>
+        <path id="Line-3" d="M404.281106,298.405744 L188.762685,182.190093 L188.322592,181.952778 L188.797222,181.072592 L189.237315,181.309907 L404.755736,297.525558 L406.654253,294.004815 L412.440093,302.237315 L402.382589,301.926487 L404.281106,298.405744 Z" fill="#979797" fill-rule="nonzero"></path>
+        <text id="main.js-/main" font-family="Helvetica" font-size="19" font-weight="normal" fill="#000000">
+            <tspan x="451.908936" y="63">main.js</tspan>
+            <tspan x="458.769531" y="86">/main</tspan>
+        </text>
+        <text id="chunk_0.js-/some" font-family="Helvetica" font-size="19" font-weight="normal" fill="#000000">
+            <tspan x="436.582764" y="183">chunk_0.js</tspan>
+            <tspan x="456.130127" y="206">/some</tspan>
+        </text>
+        <g id="angular" transform="translate(527.000000, 0.000000)">
+            <polygon id="Path" fill="#E23237" points="0 10.9392333 30.588132 0 62 10.7447309 56.9138915 51.3657097 30.588132 66 4.6742404 51.5602121"></polygon>
+            <polygon id="Path" fill="#B52E31" points="62 10.7447309 30 0 30 66 56.8186631 51.390114"></polygon>
+            <path d="M31.0402249,7 L12,49.8775762 L19.1127905,49.7551524 L22.9355056,40.0824448 L40.016161,40.0824448 L44.2017413,49.8775762 L51,50 L31.0402249,7 Z M31.0888013,20.7375212 L37.5241948,34.3523728 L25.4272289,34.3523728 L31.0888013,20.7375212 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+        <text id="chunk_1.js-/another" font-family="Helvetica" font-size="19" font-weight="normal" fill="#000000">
+            <tspan x="436.582764" y="303">chunk_1.js</tspan>
+            <tspan x="447.140381" y="326">/another</tspan>
+        </text>
+    </g>
+</svg>
